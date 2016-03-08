@@ -19,6 +19,10 @@ var parkMap = {
   zion: 'Zion National Park'
 };
 
+var funcMap = {
+  sndSlkDm: 'Send DM to assignee through Slack.'
+}
+
 var getBadges = function(t){
   return t.card('name')
   .get('name')
@@ -111,14 +115,14 @@ var boardButtonCallback = function(t){
   });
 };
 
-var cardButtonCallback = function(t){
-  var items = Object.keys(parkMap).map(function(parkCode){
-    var urlForCode = 'http://www.nps.gov/' + parkCode + '/';
+var cardButtonCallback = function(t, options){
+  var items = Object.keys(funcMap).map(function(funcCode){
+    var urlForCode = 'http://www.nps.gov/' + funcCode + '/';
     return {
-      text: parkMap[parkCode],
+      text: funcMap[funcCode],
       url: urlForCode,
       callback: function(t){
-        return t.attach({ url: urlForCode, name: parkMap[parkCode] })
+        return t.attach({ url: urlForCode, name: funcMap[funcCode] })
         .then(function(){
           return t.closePopup();
         })
@@ -127,12 +131,12 @@ var cardButtonCallback = function(t){
   });
 
   return t.popup({
-    title: 'Popup Search Example',
+    title: 'Aurender Agent Functions',
     items: items,
     search: {
-      count: 5,
-      placeholder: 'Search National Parks',
-      empty: 'No parks found'
+      count: 1,
+      placeholder: 'Select function...',
+      empty: 'No function found'
     }
   });
 };
