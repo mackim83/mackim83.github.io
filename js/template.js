@@ -149,7 +149,7 @@ var cardButtonCallback = function(t, options){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + reqMap[funcCode] + '/';
+    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + reqMap[funcCode];
     return {
       text: funcMap[funcCode],
       url: urlForCode,
