@@ -115,9 +115,10 @@ var boardButtonCallback = function(t){
   });
 };
 
+/*
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://www.nps.gov/' + funcCode + '/';
+    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + funcCode + '/';
     return {
       text: funcMap[funcCode],
       url: urlForCode,
@@ -126,6 +127,50 @@ var cardButtonCallback = function(t, options){
         .then(function(){
           return t.closePopup();
         })
+      }
+    };
+  });
+
+  return t.popup({
+    title: 'Functions',
+    items: items,
+    search: {
+      count: 1,
+      placeholder: 'Select function...',
+      empty: 'No function found'
+    }
+  });
+};
+*/
+
+var cardButtonCallback = function(t, options){
+  var items = Object.keys(funcMap).map(function(funcCode){
+    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + funcCode + '/';
+    return {
+      text: funcMap[funcCode],
+      url: urlForCode,
+      callback: function (urlForCode, options) {
+          method = "post"; // Set method to post by default if not specified.
+      
+          // The rest of this code assumes you are not using a library.
+          // It can be made less wordy if you use one.
+          var form = document.createElement("form");
+          form.setAttribute("method", method);
+          form.setAttribute("action", path);
+      
+          for(var key in options) {
+              if(options.hasOwnProperty(key)) {
+                  var hiddenField = document.createElement("input");
+                  hiddenField.setAttribute("type", "hidden");
+                  hiddenField.setAttribute("name", key);
+                  hiddenField.setAttribute("value", options[key]);
+      
+                  form.appendChild(hiddenField);
+              }
+          }
+      
+          document.body.appendChild(form);
+          form.submit();
       }
     };
   });
