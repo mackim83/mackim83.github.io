@@ -152,7 +152,7 @@ var cardButtonCallback = function(t, options){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + reqMap[funcCode];
+    var urlForCode = 'http://serene-stream-62085.herokuapp.com/dm';
     return {
       text: funcMap[funcCode],
       url: urlForCode,
@@ -168,9 +168,8 @@ var cardButtonCallback = function(t, options){
           for(var key in options) {
               if(options.hasOwnProperty(key)) {
                   var hiddenField = document.createElement("input");
-                  hiddenField.setAttribute("type", "hidden");
-                  hiddenField.setAttribute("name", key);
-                  hiddenField.setAttribute("value", options[key]);
+                  hiddenField.setAttribute("card", currentCard);
+                  hiddenField.setAttribute("board", currentBoard);
       
                   form.appendChild(hiddenField);
               }
