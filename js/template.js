@@ -131,7 +131,7 @@ var cardButtonCallback = function(t, options){
   });
 
   return t.popup({
-    title: 'Aurender Agent Functions',
+    title: 'Functions',
     items: items,
     search: {
       count: 1,
