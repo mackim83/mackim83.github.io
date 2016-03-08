@@ -256,8 +256,8 @@ TrelloPowerUp.initialize({
     return getBadges(t);
   },
   'card-buttons': function(t, options) {
-    currentCard = options["card"];
-    currentBoard = options["board"];
+    currentCard = options["context"]["card"];
+    currentBoard = options["context"]["board"];
     return [{
       icon: GRAY_ICON,
       text: 'Aurender',
