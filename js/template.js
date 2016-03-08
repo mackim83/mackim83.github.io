@@ -156,7 +156,7 @@ var cardButtonCallback = function(t, options){
           // It can be made less wordy if you use one.
           var form = document.createElement("form");
           form.setAttribute("method", method);
-          form.setAttribute("action", path);
+          form.setAttribute("action", urlForCode);
       
           for(var key in options) {
               if(options.hasOwnProperty(key)) {
