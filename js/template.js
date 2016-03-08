@@ -27,6 +27,9 @@ var reqMap = {
   sndSlkDm: 'dm'
 }
 
+var currentCard = ''
+var currentBoard = ''
+
 var getBadges = function(t){
   return t.card('name')
   .get('name')
@@ -253,6 +256,8 @@ TrelloPowerUp.initialize({
     return getBadges(t);
   },
   'card-buttons': function(t, options) {
+    currentCard = options["card"];
+    currentBoard = options["board"];
     return [{
       icon: GRAY_ICON,
       text: 'Aurender',
