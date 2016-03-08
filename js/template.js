@@ -23,6 +23,10 @@ var funcMap = {
   sndSlkDm: 'Send DM to assignee through Slack.'
 }
 
+var reqMap = {
+  sndSlkDm: 'dm'
+}
+
 var getBadges = function(t){
   return t.card('name')
   .get('name')
@@ -145,7 +149,7 @@ var cardButtonCallback = function(t, options){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + funcCode + '/';
+    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + reqMap[funcCode] + '/';
     return {
       text: funcMap[funcCode],
       url: urlForCode,
