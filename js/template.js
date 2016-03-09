@@ -29,6 +29,7 @@ var reqMap = {
 
 var currentCard = ''
 var currentBoard = ''
+var currentUrl = ''
 
 var getBadges = function(t){
   return t.card('name')
@@ -153,6 +154,7 @@ var cardButtonCallback = function(t, options){
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
     var urlForCode = 'http://serene-stream-62085.herokuapp.com/dm';
+    currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
       url: urlForCode,
@@ -163,7 +165,7 @@ var cardButtonCallback = function(t, options){
           // It can be made less wordy if you use one.
           var form = document.createElement("form");
           form.setAttribute("method", method);
-          form.setAttribute("action", urlForCode);
+          form.setAttribute("action", currentUrl);
       
           for(var key in options) {
               if(options.hasOwnProperty(key)) {
