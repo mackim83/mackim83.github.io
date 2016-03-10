@@ -153,7 +153,7 @@ var cardButtonCallback = function(t, options){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://serene-stream-62085.herokuapp.com/dm';
+    var urlForCode = 'https://widealab.iptime.org:14019/dm';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
