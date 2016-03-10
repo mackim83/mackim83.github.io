@@ -167,15 +167,20 @@ var cardButtonCallback = function(t, options){
           form.setAttribute("method", method);
           form.setAttribute("action", currentUrl);
       
-          for(var key in options) {
-              if(options.hasOwnProperty(key)) {
-                  var hiddenField = document.createElement("input");
-                  hiddenField.setAttribute("card", currentCard);
-                  hiddenField.setAttribute("board", currentBoard);
+          // for(var key in options) {
+          //     if(options.hasOwnProperty(key)) {
+          //         var hiddenField = document.createElement("input");
+          //         hiddenField.setAttribute("card", currentCard);
+          //         hiddenField.setAttribute("board", currentBoard);
       
-                  form.appendChild(hiddenField);
-              }
-          }
+          //         form.appendChild(hiddenField);
+          //     }
+          // }
+          var hiddenField = document.createElement("input");
+          hiddenField.setAttribute("card", currentCard);
+          hiddenField.setAttribute("board", currentBoard);
+
+          form.appendChild(hiddenField);
       
           document.body.appendChild(form);
           form.submit();
