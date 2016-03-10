@@ -177,6 +177,7 @@ var cardButtonCallback = function(t, options){
           //     }
           // }
           var hiddenField = document.createElement("input");
+          hiddenField.setAttribute("type", "hidden");
           hiddenField.setAttribute("card", currentCard);
           hiddenField.setAttribute("board", currentBoard);
 
