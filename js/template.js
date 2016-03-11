@@ -153,19 +153,19 @@ var cardButtonCallback = function(t, options){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'https://widealab.iptime.org:14019/dm';
+    var urlForCode = 'https://widealab.iptime.org:14019/dm/';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
       url: urlForCode,
       callback: function (urlForCode, options) {
-          method = "post"; // Set method to post by default if not specified.
+          method = "put"; // Set method to post by default if not specified.
       
           // The rest of this code assumes you are not using a library.
           // It can be made less wordy if you use one.
           var form = document.createElement("form");
           form.setAttribute("method", method);
-          form.setAttribute("action", currentUrl);
+          form.setAttribute("action", currentUrl + currentCard);
       
           // for(var key in options) {
           //     if(options.hasOwnProperty(key)) {
@@ -176,12 +176,12 @@ var cardButtonCallback = function(t, options){
           //         form.appendChild(hiddenField);
           //     }
           // }
-          var hiddenField = document.createElement("input");
-          hiddenField.setAttribute("type", "hidden");
-          hiddenField.setAttribute("card", currentCard);
-          hiddenField.setAttribute("board", currentBoard);
+          // var hiddenField = document.createElement("input");
+          // hiddenField.setAttribute("type", "hidden");
+          // hiddenField.setAttribute("card", currentCard);
+          // hiddenField.setAttribute("board", currentBoard);
 
-          form.appendChild(hiddenField);
+          // form.appendChild(hiddenField);
       
           document.body.appendChild(form);
           form.submit();
