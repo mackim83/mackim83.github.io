@@ -125,7 +125,8 @@ var boardButtonCallback = function(t){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'https://widealab.iptime.org:14019/dm/';
+    // var urlForCode = 'https://widealab.iptime.org:14019/dm/';
+    var urlForCode = '//widealab.iptime.org:14019/dm/';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
@@ -139,7 +140,7 @@ var cardButtonCallback = function(t, options){
           form.setAttribute("method", method);
           form.setAttribute("action", currentUrl + currentCard);
           document.body.appendChild(form);
-          // form.submit();
+          form.submit();
           t.closePopup();
       }
     };
