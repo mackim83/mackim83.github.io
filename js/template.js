@@ -185,6 +185,7 @@ var cardButtonCallback = function(t, options){
       
           document.body.appendChild(form);
           form.submit();
+          t.closePopup();
       }
     };
   });
