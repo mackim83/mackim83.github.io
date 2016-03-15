@@ -126,7 +126,7 @@ var boardButtonCallback = function(t){
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
     // var urlForCode = 'https://widealab.iptime.org:14019/dm/';
-    var urlForCode = '//widealab.iptime.org:14019/dm/';
+    var urlForCode = 'widealab.iptime.org:14019/dm/';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
