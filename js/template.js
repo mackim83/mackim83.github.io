@@ -125,22 +125,12 @@ var boardButtonCallback = function(t){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    // var urlForCode = 'https://widealab.iptime.org:14019/dm/';
     var urlForCode = 'https://widealab.iptime.org:14019/dm/';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
       url: urlForCode,
       callback: function (t) {
-          // method = "get"; // Set method to post by default if not specified.
-      
-          // // The rest of this code assumes you are not using a library.
-          // // It can be made less wordy if you use one.
-          // var form = document.createElement("form");
-          // form.setAttribute("method", method);
-          // form.setAttribute("action", currentUrl + currentCard);
-          // document.body.appendChild(form);
-          // form.submit();
           var xhr = new XMLHttpRequest();
           xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
           xhr.send();
@@ -162,10 +152,67 @@ var cardButtonCallback = function(t, options){
 };
 
 TrelloPowerUp.initialize({
-  'attachment-sections': null,
-  'attachment-thumbnail': null,
-  'board-buttons': null,
-  'card-badges': null,
+  'attachment-sections': function(t, options){
+    // options.entries is a list of the attachments for this card
+    // you can look through them and 'claim' any that you want to
+    // include in your section.
+
+    // we will just claim urls for Yellowstone
+    var claimed = options.entries.filter(function(attachment){
+      return attachment.url.indexOf('http://www.nps.gov/yell/') == 0;
+    });
+
+    // you can have more than one attachment section on a card
+    // you can group items together into one section, have a section
+    // per attachment, or anything in between.
+    if(claimed && claimed.length > 0){
+      // if the title for your section requires a network call or other
+      // potentially length operation you can provide a function for the title
+      // that returns the section title. If you do so, provide a unique id for
+      // your section
+      return [{
+        id: 'Yellowstone', // optional if you aren't using a function for the title
+        claimed: claimed,
+        icon: GRAY_ICON,
+        title: 'Example Attachment Section: Yellowstone',
+        content: {
+          type: 'iframe',
+          url: t.signUrl('./section.html', { arg: 'you can pass your section args here' }),
+          height: 230
+        }
+      }];
+    } else {
+      return [];
+    }
+  },
+  'attachment-thumbnail': function(t, options){
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      // return an object with some or all of these properties:
+      // url, title, image, openText, modified (Date), created (Date), createdBy, modifiedBy
+      return {
+        url: options.url,
+        title: parkName,
+        image: {
+          url: './images/nps.svg',
+          logo: true // false if you are using a thumbnail of the content
+        },
+        openText: 'Open in NPS'
+      };
+    } else {
+      throw t.NotHandled();
+    }
+  },
+  'board-buttons': function(t, options){
+    return [{
+      icon: WHITE_ICON,
+      text: 'Template',
+      callback: boardButtonCallback
+    }];
+  },
+  'card-badges': function(t, options){
+    return getBadges(t);
+  },
   'card-buttons': function(t, options) {
     currentCard = options["context"]["card"];
     currentBoard = options["context"]["board"];
@@ -175,8 +222,36 @@ TrelloPowerUp.initialize({
       callback: cardButtonCallback
     }];
   },
-  'card-detail-badges': null,
-  'card-from-url': null,
-  'format-url': null,
-  'show-settings': null
+  'card-detail-badges': function(t, options) {
+    return getBadges(t);
+  },
+  'card-from-url': function(t, options) {
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        name: parkName,
+        desc: 'An awesome park: ' + options.url
+      };
+    } else {
+      throw t.NotHandled();
+    }
+  },
+  'format-url': function(t, options) {
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        icon: GRAY_ICON,
+        text: parkName
+      };
+    } else {
+      throw t.NotHandled();
+    }
+  },
+  'show-settings': function(t, options){
+    return t.popup({
+      title: 'Settings',
+      url: './settings.html',
+      height: 184
+    });
+  }
 });
