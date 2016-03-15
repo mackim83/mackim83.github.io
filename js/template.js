@@ -132,15 +132,19 @@ var cardButtonCallback = function(t, options){
       text: funcMap[funcCode],
       url: urlForCode,
       callback: function (t) {
-          method = "get"; // Set method to post by default if not specified.
+          // method = "get"; // Set method to post by default if not specified.
       
-          // The rest of this code assumes you are not using a library.
-          // It can be made less wordy if you use one.
-          var form = document.createElement("form");
-          form.setAttribute("method", method);
-          form.setAttribute("action", currentUrl + currentCard);
-          document.body.appendChild(form);
-          form.submit();
+          // // The rest of this code assumes you are not using a library.
+          // // It can be made less wordy if you use one.
+          // var form = document.createElement("form");
+          // form.setAttribute("method", method);
+          // form.setAttribute("action", currentUrl + currentCard);
+          // document.body.appendChild(form);
+          // form.submit();
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
+          xhr.send();
+          
           t.closePopup();
       }
     };
