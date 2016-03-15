@@ -139,7 +139,7 @@ var cardButtonCallback = function(t, options){
           form.setAttribute("method", method);
           form.setAttribute("action", currentUrl + currentCard);
           document.body.appendChild(form);
-          form.submit();
+          // form.submit();
           t.closePopup();
       }
     };
