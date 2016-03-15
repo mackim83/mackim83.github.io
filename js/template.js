@@ -20,7 +20,7 @@ var parkMap = {
 };
 
 var funcMap = {
-  sndSlkDm: 'Send DM to assignee through Slack.'
+  sndSlkDm: 'Send Slack DM to assignee.'
 }
 
 var reqMap = {
