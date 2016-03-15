@@ -158,8 +158,8 @@ var cardButtonCallback = function(t, options){
     return {
       text: funcMap[funcCode],
       url: urlForCode,
-      callback: function (urlForCode, options) {
-          method = "put"; // Set method to post by default if not specified.
+      callback: function (t) {
+          method = "get"; // Set method to post by default if not specified.
       
           // The rest of this code assumes you are not using a library.
           // It can be made less wordy if you use one.
