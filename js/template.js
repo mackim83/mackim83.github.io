@@ -166,23 +166,6 @@ var cardButtonCallback = function(t, options){
           var form = document.createElement("form");
           form.setAttribute("method", method);
           form.setAttribute("action", currentUrl + currentCard);
-      
-          // for(var key in options) {
-          //     if(options.hasOwnProperty(key)) {
-          //         var hiddenField = document.createElement("input");
-          //         hiddenField.setAttribute("card", currentCard);
-          //         hiddenField.setAttribute("board", currentBoard);
-      
-          //         form.appendChild(hiddenField);
-          //     }
-          // }
-          // var hiddenField = document.createElement("input");
-          // hiddenField.setAttribute("type", "hidden");
-          // hiddenField.setAttribute("card", currentCard);
-          // hiddenField.setAttribute("board", currentBoard);
-
-          // form.appendChild(hiddenField);
-      
           document.body.appendChild(form);
           form.submit();
           t.closePopup();
