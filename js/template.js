@@ -123,34 +123,6 @@ var boardButtonCallback = function(t){
   });
 };
 
-/*
-var cardButtonCallback = function(t, options){
-  var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'http://serene-stream-62085.herokuapp.com/' + funcCode + '/';
-    return {
-      text: funcMap[funcCode],
-      url: urlForCode,
-      callback: function(t){
-        return t.attach({ url: urlForCode, name: funcMap[funcCode] })
-        .then(function(){
-          return t.closePopup();
-        })
-      }
-    };
-  });
-
-  return t.popup({
-    title: 'Functions',
-    items: items,
-    search: {
-      count: 1,
-      placeholder: 'Select function...',
-      empty: 'No function found'
-    }
-  });
-};
-*/
-
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
     var urlForCode = 'https://widealab.iptime.org:14019/dm/';
@@ -185,6 +157,10 @@ var cardButtonCallback = function(t, options){
 };
 
 TrelloPowerUp.initialize({
+  'attachment-sections': null,
+  'attachment-thumbnail': null,
+  'board-buttons': null,
+  'card-badges': null,
   'card-buttons': function(t, options) {
     currentCard = options["context"]["card"];
     currentBoard = options["context"]["board"];
@@ -193,5 +169,9 @@ TrelloPowerUp.initialize({
       text: 'Aurender',
       callback: cardButtonCallback
     }];
-  }
+  },
+  'card-detail-badges': null,
+  'card-from-url': null,
+  'format-url': null,
+  'show-settings': null
 });
