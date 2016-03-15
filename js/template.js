@@ -132,8 +132,6 @@ var cardButtonCallback = function(t, options){
       url: urlForCode,
       callback: function (t) {
           var xhr = new XMLHttpRequest();
-          // xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
-          // xhr.send();
           xhr.open('POST', "https://widealab.iptime.org:14019/dm", true);
           xhr.send(currentCard);
           
@@ -208,7 +206,7 @@ TrelloPowerUp.initialize({
   'board-buttons': function(t, options){
     return [{
       icon: WHITE_ICON,
-      text: 'Template',
+      text: 'Aurender',
       callback: boardButtonCallback
     }];
   },
