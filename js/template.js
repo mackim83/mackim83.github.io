@@ -20,7 +20,7 @@ var parkMap = {
 };
 
 var funcMap = {
-  sndSlkDm: 'Send Slack DM to assignee.'
+  sndSlkDm: 'Send Slack DM to assignee(s).'
 }
 
 var reqMap = {
@@ -132,8 +132,10 @@ var cardButtonCallback = function(t, options){
       url: urlForCode,
       callback: function (t) {
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
-          xhr.send();
+          // xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
+          // xhr.send();
+          xhr.open('POST', "https://widealab.iptime.org:14019/dm", true);
+          xhr.send('card_id=' + currentCard);
           
           t.closePopup();
       }
