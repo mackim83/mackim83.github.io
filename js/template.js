@@ -194,7 +194,7 @@ var cardButtonCallback = function(t, options){
     title: 'Functions',
     items: items,
     search: {
-      count: 1,
+      count: 2,
       placeholder: 'Select function...',
       empty: 'No function found'
     }
