@@ -135,7 +135,7 @@ var cardButtonCallback = function(t, options){
           // xhr.open('GET', "https://widealab.iptime.org:14019/dm/"  + currentCard, true);
           // xhr.send();
           xhr.open('POST', "https://widealab.iptime.org:14019/dm", true);
-          xhr.send('card_id=' + currentCard);
+          xhr.send(currentCard);
           
           t.closePopup();
       }
