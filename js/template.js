@@ -91,33 +91,49 @@ var formatNPSUrl = function(t, url){
   }
 };
 
+//var boardButtonCallback = function(t){
+//  return t.popup({
+//    title: 'Popup List Example',
+//    items: [
+//      {
+//        text: 'Open Overlay',
+//        callback: function(t){
+//          return t.overlay({
+//            url: './overlay.html',
+//            args: { rand: (Math.random() * 100).toFixed(0) }
+//          })
+//          .then(function(){
+//            return t.closePopup();
+//          });
+//        }
+//      },
+//      {
+//        text: 'Open Board Bar',
+//        callback: function(t){
+//          return t.boardBar({
+//            url: './board-bar.html',
+//            height: 200
+//          })
+//          .then(function(){
+//            return t.closePopup();
+//          });
+//        }
+//      }
+//    ]
+//  });
+//};
 var boardButtonCallback = function(t){
   return t.popup({
-    title: 'Popup List Example',
+    title: 'Aurender',
     items: [
       {
-        text: 'Open Overlay',
-        callback: function(t){
-          return t.overlay({
-            url: './overlay.html',
-            args: { rand: (Math.random() * 100).toFixed(0) }
-          })
-          .then(function(){
-            return t.closePopup();
-          });
-        }
-      },
-      {
-        text: 'Open Board Bar',
-        callback: function(t){
-          return t.boardBar({
-            url: './board-bar.html',
-            height: 200
-          })
-          .then(function(){
-            return t.closePopup();
-          });
-        }
+        text: 'Open Calendar',
+        callback: function (t) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', "https://calendar.sunrise.am/", true);
+          xhr.send();
+
+          t.closePopup();
       }
     ]
   });
