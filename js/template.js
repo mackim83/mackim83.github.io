@@ -134,6 +134,7 @@ var boardButtonCallback = function(t){
           xhr.send();
 
           t.closePopup();
+        }
       }
     ]
   });
