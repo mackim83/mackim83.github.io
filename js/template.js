@@ -129,9 +129,6 @@ var boardButtonCallback = function(t){
       {
         text: 'Open Calendar',
         callback: function (t) {
-//          var xhr = new XMLHttpRequest();
-//          xhr.open('GET', "https://calendar.sunrise.am/", true);
-//          xhr.send();
           var win = window.open("https://calendar.sunrise.am/", '_blank');
           win.focus();
 
@@ -141,11 +138,6 @@ var boardButtonCallback = function(t){
     ]
   });
 };
-
-function OpenInNewTab(url) {
-  var win = window.open(url, '_blank');
-  win.focus();
-}
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
