@@ -125,14 +125,14 @@ var boardButtonCallback = function(t){
 
 var cardButtonCallback = function(t, options){
   var items = Object.keys(funcMap).map(function(funcCode){
-    var urlForCode = 'https://widealab.iptime.org:14019/dm/';
+    var urlForCode = 'https://mashup.aurender.com/dm/';
     currentUrl = urlForCode;
     return {
       text: funcMap[funcCode],
       url: urlForCode,
       callback: function (t) {
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', "https://widealab.iptime.org:14019/dm", true);
+          xhr.open('POST', "https://mashup.aurender.com/dm", true);
           xhr.send(currentCard);
           
           t.closePopup();
